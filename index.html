@@ -1,846 +1,240 @@
 <!DOCTYPE html>
 <html lang="it">
+
 <head>
-<meta http-equiv="Cache-Control" content="no-cache">
-<link rel="manifest" href="manifest.json?v=2">
-<meta name="apple-mobile-web-app-title" content="Starbene">
-<link rel="icon" href="icon-192.png">
-<link rel="apple-touch-icon" href="icon-192.png">
-<link rel="stylesheet" href="style.css?v=2">
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Scheda Starbene</title>
-
-<style>
-
-button{
-  border: none;
-  background: none;
-  padding: 0;
-
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  font: inherit;
-  cursor: pointer;
-}
-  
-:root{
---bg:#000;
---card:#1c1c1e;
---accent:#ffd600;
---text:#fff;
-}
-
-.done{
-opacity:0.5;
-filter:grayscale(0.6);
-}
-
-.done b{
-text-decoration:line-through;
-}
-
-*{box-sizing:border-box;}
-
-body{
-margin:0;
-font-family:-apple-system,BlinkMacSystemFont;
-background:
-  radial-gradient(circle at 10% 10%, #2a2a2a, transparent 35%),
-  radial-gradient(circle at 90% 20%, #222, transparent 35%),
-  linear-gradient(180deg, #0a0a0a 0%, #000 100%);
-color:white;}
-
-.header{
-padding:15px;
-text-align:center;
-font-size:22px;
-font-weight:700;
-}
-
-.layout{
-  display:block;
-  transition: padding-top 0.2s ease;
-  padding-top:100px;
-}
-.sidebar{
-  padding:10px;
-  position:sticky;   
-  top:100px;      
-  z-index:999;       
-  background:#000;  
-}
-  .sidebar.glass{
-background: rgba(20,20,20,0.45);
-backdrop-filter: blur(16px) saturate(150%);
--webkit-backdrop-filter: blur(16px) saturate(150%);
-border-bottom:none;
-box-shadow: none;
-}
-.search{
-width:100%;
-padding:12px 16px;
-border-radius:999px;
-border:none;
-background: rgba(20,20,20,0.45);
-backdrop-filter: blur(16px) saturate(150%);
--webkit-backdrop-filter: blur(16px) saturate(150%);
-color:white;
-margin-bottom:10px;
-font-size:20px; 
-}
-@media(max-width:600px){
-  .search{
-    padding:14px 18px;
-    font-size:20px;
-  }
-
-.search, .filters{
-  transition: all 0.25s ease;
-}
-  
-  .filters{
-    display:flex;
-    gap:8px;
-    overflow-x:auto;
-    padding:6px 4px;
-  }
-
-  .filter{
-    width:auto;        /* 👈 FIX PRINCIPALE */
-  }
- .tabs{
-  margin-top:0px;
-  padding:6px 10px 10px;
-    }
-  .sidebar{
-  position:sticky;
-  top:0;
-  z-index:999;
-  background:#000;
-  padding:8px 6px;
-}
-  /* 👇 SHRINK SOLO MOBILE */
-.sidebar.shrink .search{
-  transform: scale(0.9);
-  width:100%;
-  margin-bottom:6px;
-}
-
-.sidebar.shrink .filters{
- transform: scale(0.9);
-  width:100%;
-}
-
-/* transizione smooth */
-.search, .filters{
-  transition: all 0.25s ease;
-}
-
-body{
-  background:#000 !important;
-}  
-  
-}
-
-.filters{
-  display:flex;
-  gap:8px;
-  overflow:auto;
-  -webkit-overflow-scrolling: touch;
-  padding:6px 4px 2px;
-  background: transparent;
-}
-  .sidebar.glass .search{
-  background: transparent;
-}
-
-.sidebar.glass .filters{
-  background: transparent;
-}
- 
-.filter{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-
-  width:100%;              
-  text-align:center;
-  padding:10px 16px; 
-
-  height:44px;
-  margin-bottom:10px;
-
-  border-radius:999px;
-  background:#2c2c2e;
-
-  font-size:16px;
-  font-weight:600;
-
-  cursor:pointer;
-  white-space:nowrap;
-
-  transition: transform 0.15s ease, background 0.2s;
-}
-.filter.active{
-  transform: scale(1.03);
-}
-  
-.filter.active{
-  background:var(--accent);
-  color:black;
-}
-
-.tabs button.active{
-  background:var(--accent);
-  color:black;
-  box-shadow:0 4px 12px rgba(255,214,0,0.3);
-}
-
-.tabs{
-display:flex;
-gap:10px;
-padding:10px;
-border-radius:999px;
-}
-
-.tabs button{
-flex:1;
-
-display:flex;
-align-items:center;
-justify-content:center;
-gap:8px;
-
-padding:12px 16px; /* 👈 più aria */
-
-border:none;
-border-radius:999px; /* 👈 pill vera */
-background:#2c2c2e;
-color:white;
-font-weight:600;
-}
-.tabs button svg{
-  width:24px;
-  height:24px;
-  stroke-width:2.8;
-}
-
-.tabs button span{
-  font-size:18px;
-  font-weight:600;
-}
-
-/* MOBILE */
-@media(max-width:600px){
-  .tabs button{
-    gap:6px;
-    padding:10px;
-  }
-  
-  .tabs button svg{
-    width:22px;
-    height:22px;
-  }
-
-
-  .tabs button span{
-    font-size:18px;
-    font-weight:600;
-  }
-}
-
-/* DESKTOP */
-.tabs .active{
-background:var(--accent);
-color:black;
-}
-
-.content{
-  padding:26px 10px 16px;
-  margin-top:0px;
-}
-
-#app{
-display:grid;
-grid-template-columns:1fr;
-gap:20px;
-}
-#scheda{
-  display:grid;
-  grid-template-columns:repeat(auto-fill,minmax(350px,1fr));
-  gap:20px;
-}
-  #app, #scheda{
-  padding-bottom:20px;
-}
-.card{
-background:var(--card);
-border-radius:20px;
-padding:14px;
-  display:flex;                /* 👈 AGGIUNGI */
-flex-direction:column;       /* 👈 AGGIUNGI */
-
-gap:12px;  
-box-shadow:0 6px 20px rgba(0,0,0,0.4);
-position: relative;
-cursor:pointer;
-margin-bottom:0;
-transition: 
-transform 0.25s ease,
-box-shadow 0.25s ease,
-background 0.25s ease
-}
-
-/* ===== HOVER CARD ===== */
-.card:hover{
-  transform: translateY(-3px) scale(1.01);
-
-  box-shadow:
-  0 10px 25px rgba(0,0,0,0.5),
-  0 0 0 1px rgba(255,214,0,0.06),
-  0 0 12px rgba(255,214,0,0.12);
-}
-
-/* ===== CLICK FEEDBACK ===== */
-.card:active{
-  transform: scale(0.98);
-}
-
-.card img{
-  width:100%;
-  height:180px;              
-  object-fit:contain;         
-  transform: scale(1.25); 
-  object-position:center 60%;
-  border-radius:14px;
-  background: radial-gradient(circle, #1a1a1a, #0f0f0f);
-  display:block;
-  padding:0;                
-}
-
-.card{
-  overflow:hidden;
-}
-   .card img{
-    transform: scale(1.15);
-    object-position:center 60%;
-     transition: transform 0.3s ease;
-  }
-  /* ===== CONTENITORE IMMAGINE ===== */
-.img-box{
-  height:180px;
-  border-radius:14px;
-
-  margin:0; 
-  overflow:hidden;   /* 👈 BLOCCA LO SBORDO */
-  position: relative;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-
-  background: radial-gradient(circle, #1a1a1a, #0f0f0f);
-}
-
-/* ===== IMMAGINE ===== */
-.img-box img{
-  width:100%;
-  height:100%;
-
-  object-fit:contain;
-top: 2px;
-  transform: scale(1.2);
- transform-origin:center center; /* 👈 FIX IMPORTANTISSIMO */
-
-  margin:auto;
-
-  transition: transform 0.3s ease;
-}
-
-/* ===== HOVER ===== */
-.card:hover .img-box img{
-  transform: scale(1.3);
-}
-
-input,textarea{
-width:100%;
-margin-top:6px;
-background:#2c2c2e;
-border:none;
-border-radius:12px;
-padding:10px;
-color:white;
-}
-
-.label{
-font-size:11px;
-color:#aaa;
-margin-top:6px;
-}
-
-@media(min-width:1000px){
-  .tabs button svg{
-    width:22px;
-    height:22px;
-  }
-
-
-  .tabs button span{
-    font-size:17px;
-  }
- 
-.layout{
-  display:grid;
-  grid-template-columns:280px 1fr; /* 👈 più compatta */
-}
-
-.sidebar{
-  background:#111;
-  border-right:1px solid #222;
-  padding:14px 10px;
-  position:sticky;
-  top:100px;
-  height:calc(100vh - var(--header-h, 100px));
-  overflow-y:auto;
-}
-
-.search{
-  width:100%;
-  margin:0 0 12px 0;
-}  
-  
-  .header{
-  will-change: padding;
-}
-
-/* CONTENITORE FILTRI */
-.filters{
-  display:block;
-  margin-top:10px;
-}
-
-/* BOTTONI FILTRO */
-.filter{
-  width:100%;
-  height:34px;        /* 👈 più piccoli */
-  margin-bottom:8px;
-  padding:6px 10px;
-
-  font-size:14px;
-  border-radius:999px;
-
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  background:#2c2c2e;
-  border:1px solid rgba(255,255,255,0.08);
-}
-
-/* GRIGLIA ESERCIZI */
-#app{
-  display:grid;
-  grid-template-columns:repeat(auto-fill,minmax(250px,1fr));
-  gap:20px;
-}
-
-/* GRIGLIA SCHEDA */
-#scheda{
-  display:grid;
-  grid-template-columns:repeat(auto-fill,minmax(350px,1fr));
-  gap:20px;
-  }
-  .img-box{
-  height:200px; /* 👈 più aria verticale */
-}
-
-.img-box img{
-  transform: scale(1.25);
-}
-
-.card:hover .img-box img{
-  transform: scale(1.35);
-}
-}
-/* ===== HEADER VETRO RESPONSIVE ===== */
-.header{
-  position:fixed;
-  top:0;
-  left:0;
-  width:100%;
-  z-index:1000;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  padding:14px 10px; /* grande */
-  background: rgba(20,20,20,0.45);
-  backdrop-filter: blur(16px) saturate(150%);
-  -webkit-backdrop-filter: blur(16px) saturate(150%);
-  transition: transform 0.3s ease, padding 0.3s ease;
-  border-bottom:none;
-}
-  
-.header.hidden{
-  transform: translateY(-100%);
-}
-  
-/*header più piccolo*/
-.header.small{
-  padding:6px 10px;
-
-  backdrop-filter: blur(20px) saturate(180%);
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
-}
-
-/* ===== LOGO RESPONSIVE ===== */
-.logo{
-  width:100%;
-  max-width:140px;
-  height:auto;
-  object-fit:contain;
-  filter: brightness(0.75) contrast(1.2);
-  opacity:0.95;
-}
-
-.header.small .logo{
-  max-width:100px;
-  transition: all 0.3s ease;
-}  
-
-/* 📱 MOBILE */
-@media(max-width:600px){
-  .header{
-    padding:8px;
-  }
-  .logo{
-    max-width:130px;
-  }
-  #app,
-#scheda{
-  gap:clamp(14px, 2vw, 20px); /* 👈 meno spacing in mobile */
-}
-
-.content{
-  padding:22px 10px 14px; /* 👈 bilanciato mobile */
-}
-}
-
-/* 💻 DESKTOP */
-@media(min-width:1000px){
-  .logo{
-    max-width:240px;
-}
-
-.header.small .logo{
-    max-width:160px;
-  }  
-  }
-/* ===== BASE BUTTON (tutti uguali) ===== */
-.btn{
-  background: var(--accent);
-  color: var(--card);
-
-  border-radius:999px;
-
-  height:26px;
-  min-width:26px;
-  padding:0 8px;
-
-
-  font-size:16px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
- 
-  font-weight:600;
-  line-height:1;
-
-  cursor:pointer;
-}
-
-.btn svg{
-  width:18px;
-  height:18px;
- 
-  display:block;           /* 👈 FIX PRINCIPALE */
-  margin:auto;             /* 👈 CENTRA PERFETTAMENTE */
-} 
-
-/* ===== RESET ===== */
-.btn.reset{
-  width:auto; /* 👈 NON più full width */
-  height:28px;
-  padding:0 12px;
-
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap:6px;
-
-  background: var(--accent);
-  color: var(--card);
-
-  border-radius:999px;
-  margin:10px 0;
-
-  font-size:16px;
-}
-
-.btn.reset svg{
-  width:16px;
-  height:16px;
-  stroke: var(--card);
-  transform: translateY(0.5px);
-}
-
-.actions{
-  position:absolute;
-
-  right:16px;
-
-  /* 👇 POSIZIONE INTELLIGENTE */
-  top: calc(14px + 20px - 14px); 
-  /* padding + titolo + spazio */
-
-  transform: translateY(-50%);
-
-  display:flex;
-  gap:6px;
-}
- 
-</style>
+	<meta http-equiv="Cache-Control" content="no-cache">
+	<link rel="manifest" href="manifest.json?v=2">
+	<meta name="apple-mobile-web-app-title" content="Starbene">
+	<link rel="icon" href="icon-192.png">
+	<link rel="apple-touch-icon" href="icon-192.png">
+	<link rel="stylesheet" href="style.css">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Scheda Starbene</title>
 </head>
 
 <body>
 
-<div class="header">
-  <img src="logo.PNG" class="logo">
-</div>
+	<div class="header">
+		<img src="logo.PNG" class="logo">
+	</div>
 
-<div class="layout">
+	<div class="layout">
 
-<div class="sidebar">
-<input class="search" placeholder="Cerca esercizio..." oninput="render()">
-<div class="filters" id="filters"></div>
-</div>
+		<div class="sidebar">
+			<input class="search" placeholder="Cerca esercizio..." oninput="render()">
+			<div class="filters" id="filters"></div>
+		</div>
 
-<div class="content">
+		<div class="content">
 
-<div class="tabs">
-<button onclick="showTab('esercizi')" id="tabE" class="active">
-<svg viewBox="0 0 24 24">
-  <path d="M3 10V14M6 8V16 10V14 10V14M18 8V16M21 10V14M6 12H18"
-    stroke="currentColor"
-    stroke-width="2"
-    stroke-linecap="round"
-    stroke-linejoin="round"
-    fill="none"/>
-</svg>
-  <span>Esercizi</span>
-</button>
+			<div class="tabs">
+				<button onclick="showTab('esercizi')" id="tabE" class="active">
+					<svg viewBox="0 0 24 24">
+						<path d="M3 10V14M6 8V16 10V14 10V14M18 8V16M21 10V14M6 12H18" stroke="currentColor"
+							stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+					</svg>
+					<span>Esercizi</span>
+				</button>
 
-<button onclick="showTab('scheda')" id="tabS">
-<svg viewBox="0 0 24 24">
-  <path d="M8 6H20M8 12H20M8 18H20M4 6H4.01M4 12H4.01M4 18H4.01"
-    stroke="currentColor"
-    stroke-width="2"
-    stroke-linecap="round"/>
-</svg>
-  <span>La Mia Scheda</span>
-</button>
-</div>
-<div id="eserciziTab">
-<div id="app"></div>
-</div>
+				<button onclick="showTab('scheda')" id="tabS">
+					<svg viewBox="0 0 24 24">
+						<path d="M8 6H20M8 12H20M8 18H20M4 6H4.01M4 12H4.01M4 18H4.01" stroke="currentColor"
+							stroke-width="2" stroke-linecap="round" />
+					</svg>
+					<span>La Mia Scheda</span>
+				</button>
+			</div>
+			<div id="eserciziTab">
+				<div id="app"></div>
+			</div>
 
-<div id="schedaTab" style="display:none;">
-<button class="btn reset" onclick="resetScheda()">
-<svg viewBox="0 0 24 24">
-  <path d="M3.508 6.726c1.765-2.836 4.911-4.726 8.495-4.726 5.518 0 9.997 4.48 9.997 9.997 0 5.519-4.479 9.999-9.997 9.999-5.245 0-9.553-4.048-9.966-9.188-.024-.302.189-.811.749-.811.391 0 .715.3.747.69.351 4.369 4.012 7.809 8.47 7.809 4.69 0 8.497-3.808 8.497-8.499 0-4.689-3.807-8.497-8.497-8.497-3.037 0-5.704 1.597-7.206 3.995l3 .005c.414 0 .75.336.75.75s-.336.75-.75.75h-5.2c-.414 0-.75-.336-.75-.75v-5.2c0-.414.336-.75.75-.75s.75.335.75.75z"
-    fill="currentColor"
-    stroke="currentColor"
-    stroke-width="2"
-    stroke-linecap="round"
-    stroke-linejoin="round"/>
-</svg>
-  Reset
-</button>
-<div id="scheda"></div>
-</div>
+			<div id="schedaTab" style="display:none;">
+				<button class="btn reset" onclick="resetScheda()">
+					<svg viewBox="0 0 24 24">
+						<path
+							d="M3.508 6.726c1.765-2.836 4.911-4.726 8.495-4.726 5.518 0 9.997 4.48 9.997 9.997 0 5.519-4.479 9.999-9.997 9.999-5.245 0-9.553-4.048-9.966-9.188-.024-.302.189-.811.749-.811.391 0 .715.3.747.69.351 4.369 4.012 7.809 8.47 7.809 4.69 0 8.497-3.808 8.497-8.499 0-4.689-3.807-8.497-8.497-8.497-3.037 0-5.704 1.597-7.206 3.995l3 .005c.414 0 .75.336.75.75s-.336.75-.75.75h-5.2c-.414 0-.75-.336-.75-.75v-5.2c0-.414.336-.75.75-.75s.75.335.75.75z"
+							fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+							stroke-linejoin="round" />
+					</svg>
+					Reset
+				</button>
+				<div id="scheda"></div>
+			</div>
 
-</div>
+		</div>
 
-</div>
+	</div>
 
-<script>
+	<script>
 
-/* DATI */
-const categoryLabels={
-"Tutti":"Tutti",
-"Riscaldamento":"Riscaldamento",
-"Mobilità":"Mobilità",
-"Petto":"Petto",
-"Schiena":"Schiena",
-"Gambe":"Gambe",
-"Spalle":"Spalle",
-"Braccia":"Braccia",
-"Addome":"Addome"
-};
+		/* DATI */
+		const categoryLabels = {
+			"Tutti": "Tutti",
+			"Riscaldamento": "Riscaldamento",
+			"Mobilità": "Mobilità",
+			"Petto": "Petto",
+			"Schiena": "Schiena",
+			"Gambe": "Gambe",
+			"Spalle": "Spalle",
+			"Braccia": "Braccia",
+			"Addome": "Addome"
+		};
 
-/* ===== ESERCIZI ===== */
+		/* ===== ESERCIZI ===== */
 
-const exercises = [
+		const exercises = [
 
-/* 🔥 RISCALDAMENTO */
-{ name:"Tapis Roulant", category:"Riscaldamento", image:"images/tapis.png", settings:["Tempo","Velocità","Inclinazione"] },
-{ name:"Climb", category:"Riscaldamento", image:"https://source.unsplash.com/400x300/?stair-climber", settings:["Tempo","Velocità","Inclinazione"] },
-{ name:"Skill Run", category:"Riscaldamento", image:"https://source.unsplash.com/400x300/?running", settings:["Tempo","Velocità","Inclinazione"] },
-{ name:"Synchro", category:"Riscaldamento", image:"https://source.unsplash.com/400x300/?elliptical", settings:["Tempo","Velocità","Inclinazione"] },
+			/* 🔥 RISCALDAMENTO */
+			{ name: "Tapis Roulant", category: "Riscaldamento", image: "images/tapis.png", settings: ["Tempo", "Velocità", "Inclinazione"] },
+			{ name: "Climb", category: "Riscaldamento", image: "https://source.unsplash.com/400x300/?stair-climber", settings: ["Tempo", "Velocità", "Inclinazione"] },
+			{ name: "Skill Run", category: "Riscaldamento", image: "https://source.unsplash.com/400x300/?running", settings: ["Tempo", "Velocità", "Inclinazione"] },
+			{ name: "Synchro", category: "Riscaldamento", image: "https://source.unsplash.com/400x300/?elliptical", settings: ["Tempo", "Velocità", "Inclinazione"] },
 
-/* 🟤 MOBILITÀ */
-{ name:"Estensioni Braccio/Gamba", category:"Mobilità", image:"https://source.unsplash.com/400x300/?stretching", settings:["Serie","Ripetizioni"] },
-{ name:"Retroversioni del bacino in quadrupedia", category:"Mobilità", image:"https://source.unsplash.com/400x300/?core", settings:["Serie","Ripetizioni"] },
-{ name:"Elevazioni con asta", category:"Mobilità", image:"https://source.unsplash.com/400x300/?shoulder-mobility", settings:["Serie","Ripetizioni"] },
-{ name:"Retropulsioni con asta", category:"Mobilità", image:"https://source.unsplash.com/400x300/?shoulder-exercise", settings:["Serie","Ripetizioni"] },
-{ name:"Affossamento cingolo scapolare", category:"Mobilità", image:"https://source.unsplash.com/400x300/?shoulder-mobility", settings:["Serie","Ripetizioni"] },
-{ name:"Retroposizione cingolo scapolare", category:"Mobilità", image:"https://source.unsplash.com/400x300/?posture-exercise", settings:["Serie","Ripetizioni"] },
+			/* 🟤 MOBILITÀ */
+			{ name: "Estensioni Braccio/Gamba", category: "Mobilità", image: "https://source.unsplash.com/400x300/?stretching", settings: ["Serie", "Ripetizioni"] },
+			{ name: "Retroversioni del bacino in quadrupedia", category: "Mobilità", image: "https://source.unsplash.com/400x300/?core", settings: ["Serie", "Ripetizioni"] },
+			{ name: "Elevazioni con asta", category: "Mobilità", image: "https://source.unsplash.com/400x300/?shoulder-mobility", settings: ["Serie", "Ripetizioni"] },
+			{ name: "Retropulsioni con asta", category: "Mobilità", image: "https://source.unsplash.com/400x300/?shoulder-exercise", settings: ["Serie", "Ripetizioni"] },
+			{ name: "Affossamento cingolo scapolare", category: "Mobilità", image: "https://source.unsplash.com/400x300/?shoulder-mobility", settings: ["Serie", "Ripetizioni"] },
+			{ name: "Retroposizione cingolo scapolare", category: "Mobilità", image: "https://source.unsplash.com/400x300/?posture-exercise", settings: ["Serie", "Ripetizioni"] },
 
-/* 🔵 PETTO */
-{ name:"Spinte su panca", category:"Petto", image:"https://source.unsplash.com/400x300/?bench-press", settings:["Peso","Serie","Ripetizioni"] },
-{ name:"Piegamenti sulle braccia", category:"Petto", image:"https://source.unsplash.com/400x300/?push-up", settings:["Serie","Ripetizioni"] },
-{ name:"Croci su panca", category:"Petto", image:"https://source.unsplash.com/400x300/?dumbbell-fly", settings:["Peso","Serie","Ripetizioni"] },
-{ name:"Pull-Over", category:"Petto", image:"https://source.unsplash.com/400x300/?pullover", settings:["Peso","Serie","Ripetizioni"] },
-{ name:"Croci al DAP", category:"Petto", image:"https://source.unsplash.com/400x300/?cable-fly", settings:["Peso","Serie","Ripetizioni"] },
-{ name:"Cross Over al DAP", category:"Petto", image:"https://source.unsplash.com/400x300/?crossover", settings:["Peso","Serie","Ripetizioni"] },
-{ name:"Chest Press", category:"Petto", image:"https://source.unsplash.com/400x300/?chest-press", settings:["Peso","Sedile","Serie","Ripetizioni"] },
-{ name:"Braccio addotto", category:"Petto", image:"https://source.unsplash.com/400x300/?chest-machine", settings:["Peso","Serie","Ripetizioni"] },
-{ name:"Braccio abdotto", category:"Petto", image:"https://source.unsplash.com/400x300/?chest-workout", settings:["Peso","Serie","Ripetizioni"] },
+			/* 🔵 PETTO */
+			{ name: "Spinte su panca", category: "Petto", image: "https://source.unsplash.com/400x300/?bench-press", settings: ["Peso", "Serie", "Ripetizioni"] },
+			{ name: "Piegamenti sulle braccia", category: "Petto", image: "https://source.unsplash.com/400x300/?push-up", settings: ["Serie", "Ripetizioni"] },
+			{ name: "Croci su panca", category: "Petto", image: "https://source.unsplash.com/400x300/?dumbbell-fly", settings: ["Peso", "Serie", "Ripetizioni"] },
+			{ name: "Pull-Over", category: "Petto", image: "https://source.unsplash.com/400x300/?pullover", settings: ["Peso", "Serie", "Ripetizioni"] },
+			{ name: "Croci al DAP", category: "Petto", image: "https://source.unsplash.com/400x300/?cable-fly", settings: ["Peso", "Serie", "Ripetizioni"] },
+			{ name: "Cross Over al DAP", category: "Petto", image: "https://source.unsplash.com/400x300/?crossover", settings: ["Peso", "Serie", "Ripetizioni"] },
+			{ name: "Chest Press", category: "Petto", image: "https://source.unsplash.com/400x300/?chest-press", settings: ["Peso", "Sedile", "Serie", "Ripetizioni"] },
+			{ name: "Braccio addotto", category: "Petto", image: "https://source.unsplash.com/400x300/?chest-machine", settings: ["Peso", "Serie", "Ripetizioni"] },
+			{ name: "Braccio abdotto", category: "Petto", image: "https://source.unsplash.com/400x300/?chest-workout", settings: ["Peso", "Serie", "Ripetizioni"] },
 
-/* 🔵 SCHIENA */
-{ name:"Vertical Traction", category:"Schiena", image:"https://source.unsplash.com/400x300/?lat-machine", settings:["Peso","Serie","Ripetizioni"] },
-{ name:"Lat Machine", category:"Schiena", image:"https://source.unsplash.com/400x300/?lat-pulldown", settings:["Peso","Serie","Ripetizioni"] },
-{ name:"Lat Machine IMP: A-B-C-D-E", category:"Schiena", image:"https://source.unsplash.com/400x300/?lat-pulldown", settings:["Peso","Serie","Ripetizioni"] },
-{ name:"Easy Traction", category:"Schiena", image:"https://source.unsplash.com/400x300/?pull-up", settings:["Peso","Serie","Ripetizioni"] },
-{ name:"Low Row", category:"Schiena", image:"https://source.unsplash.com/400x300/?row-machine", settings:["Peso","Serie","Ripetizioni"] },
-{ name:"Pulley", category:"Schiena", image:"https://source.unsplash.com/400x300/?seated-row", settings:["Peso","Serie","Ripetizioni"] },
-{ name:"Rematore", category:"Schiena", image:"https://source.unsplash.com/400x300/?barbell-row", settings:["Peso","Serie","Ripetizioni"] },
+			/* 🔵 SCHIENA */
+			{ name: "Vertical Traction", category: "Schiena", image: "https://source.unsplash.com/400x300/?lat-machine", settings: ["Peso", "Serie", "Ripetizioni"] },
+			{ name: "Lat Machine", category: "Schiena", image: "https://source.unsplash.com/400x300/?lat-pulldown", settings: ["Peso", "Serie", "Ripetizioni"] },
+			{ name: "Lat Machine IMP: A-B-C-D-E", category: "Schiena", image: "https://source.unsplash.com/400x300/?lat-pulldown", settings: ["Peso", "Serie", "Ripetizioni"] },
+			{ name: "Easy Traction", category: "Schiena", image: "https://source.unsplash.com/400x300/?pull-up", settings: ["Peso", "Serie", "Ripetizioni"] },
+			{ name: "Low Row", category: "Schiena", image: "https://source.unsplash.com/400x300/?row-machine", settings: ["Peso", "Serie", "Ripetizioni"] },
+			{ name: "Pulley", category: "Schiena", image: "https://source.unsplash.com/400x300/?seated-row", settings: ["Peso", "Serie", "Ripetizioni"] },
+			{ name: "Rematore", category: "Schiena", image: "https://source.unsplash.com/400x300/?barbell-row", settings: ["Peso", "Serie", "Ripetizioni"] },
 
-/* 🟡 GAMBE */
-{ name:"Leg Press Pure Strenght", category:"Gambe", image:"https://source.unsplash.com/400x300/?leg-press", settings:["Peso","Serie","Ripetizioni"] },
-{ name:"Multipower", category:"Gambe", image:"https://source.unsplash.com/400x300/?smith-machine", settings:["Peso","Serie","Ripetizioni"] },
-{ name:"Panca HPX", category:"Gambe", image:"https://source.unsplash.com/400x300/?gym-machine", settings:["Peso","Serie","Ripetizioni"] },
-{ name:"Stacchi", category:"Gambe", image:"https://source.unsplash.com/400x300/?deadlift", settings:["Peso","Serie","Ripetizioni"] },
-{ name:"Abductor", category:"Gambe", image:"https://source.unsplash.com/400x300/?abductor-machine", settings:["Peso","Serie","Ripetizioni"] },
-{ name:"Glutei", category:"Gambe", image:"https://source.unsplash.com/400x300/?glute", settings:["Peso","Serie","Ripetizioni"] },
-{ name:"Hip Thrust", category:"Gambe", image:"https://source.unsplash.com/400x300/?hip-thrust", settings:["Peso","Serie","Ripetizioni"] },
-{ name:"Sollevamenti unilaterali", category:"Gambe", image:"https://source.unsplash.com/400x300/?lunges", settings:["Peso","Serie","Ripetizioni"] },
-{ name:"Calf Press", category:"Gambe", image:"https://source.unsplash.com/400x300/?calf-raise", settings:["Peso","Serie","Ripetizioni"] },
-{ name:"Leg Extension", category:"Gambe", image:"https://source.unsplash.com/400x300/?leg-extension", settings:["Peso","Sedile","Rullo","Posizione","Serie","Ripetizioni"] },
-{ name:"Leg Press", category:"Gambe", image:"https://source.unsplash.com/400x300/?leg-press", settings:["Peso","Sedile","Serie","Ripetizioni"] },
-{ name:"Leg Curl", category:"Gambe", image:"https://source.unsplash.com/400x300/?leg-curl", settings:["Peso","Sedile","Rullo","Posizione","Serie","Ripetizioni"] },
+			/* 🟡 GAMBE */
+			{ name: "Leg Press Pure Strenght", category: "Gambe", image: "https://source.unsplash.com/400x300/?leg-press", settings: ["Peso", "Serie", "Ripetizioni"] },
+			{ name: "Multipower", category: "Gambe", image: "https://source.unsplash.com/400x300/?smith-machine", settings: ["Peso", "Serie", "Ripetizioni"] },
+			{ name: "Panca HPX", category: "Gambe", image: "https://source.unsplash.com/400x300/?gym-machine", settings: ["Peso", "Serie", "Ripetizioni"] },
+			{ name: "Stacchi", category: "Gambe", image: "https://source.unsplash.com/400x300/?deadlift", settings: ["Peso", "Serie", "Ripetizioni"] },
+			{ name: "Abductor", category: "Gambe", image: "https://source.unsplash.com/400x300/?abductor-machine", settings: ["Peso", "Serie", "Ripetizioni"] },
+			{ name: "Glutei", category: "Gambe", image: "https://source.unsplash.com/400x300/?glute", settings: ["Peso", "Serie", "Ripetizioni"] },
+			{ name: "Hip Thrust", category: "Gambe", image: "https://source.unsplash.com/400x300/?hip-thrust", settings: ["Peso", "Serie", "Ripetizioni"] },
+			{ name: "Sollevamenti unilaterali", category: "Gambe", image: "https://source.unsplash.com/400x300/?lunges", settings: ["Peso", "Serie", "Ripetizioni"] },
+			{ name: "Calf Press", category: "Gambe", image: "https://source.unsplash.com/400x300/?calf-raise", settings: ["Peso", "Serie", "Ripetizioni"] },
+			{ name: "Leg Extension", category: "Gambe", image: "https://source.unsplash.com/400x300/?leg-extension", settings: ["Peso", "Sedile", "Rullo", "Posizione", "Serie", "Ripetizioni"] },
+			{ name: "Leg Press", category: "Gambe", image: "https://source.unsplash.com/400x300/?leg-press", settings: ["Peso", "Sedile", "Serie", "Ripetizioni"] },
+			{ name: "Leg Curl", category: "Gambe", image: "https://source.unsplash.com/400x300/?leg-curl", settings: ["Peso", "Sedile", "Rullo", "Posizione", "Serie", "Ripetizioni"] },
 
-/* 🟣 SPALLE */
-{ name:"Lento su panca", category:"Spalle", image:"https://source.unsplash.com/400x300/?shoulder-press", settings:["Peso","Inclinazione","Serie","Ripetizioni"] },
-{ name:"Spinte neutre", category:"Spalle", image:"https://source.unsplash.com/400x300/?dumbbell-press", settings:["Peso","Serie","Ripetizioni"] },
-{ name:"Alzate frontali", category:"Spalle", image:"https://source.unsplash.com/400x300/?front-raise", settings:["Peso","Serie","Ripetizioni"] },
-{ name:"Alzate laterali 45°", category:"Spalle", image:"https://source.unsplash.com/400x300/?rear-delt", settings:["Peso","Serie","Ripetizioni"] },
-{ name:"Tirate indietro", category:"Spalle", image:"https://source.unsplash.com/400x300/?rear-shoulder", settings:["Peso","Serie","Ripetizioni"] },
+			/* 🟣 SPALLE */
+			{ name: "Lento su panca", category: "Spalle", image: "https://source.unsplash.com/400x300/?shoulder-press", settings: ["Peso", "Inclinazione", "Serie", "Ripetizioni"] },
+			{ name: "Spinte neutre", category: "Spalle", image: "https://source.unsplash.com/400x300/?dumbbell-press", settings: ["Peso", "Serie", "Ripetizioni"] },
+			{ name: "Alzate frontali", category: "Spalle", image: "https://source.unsplash.com/400x300/?front-raise", settings: ["Peso", "Serie", "Ripetizioni"] },
+			{ name: "Alzate laterali 45°", category: "Spalle", image: "https://source.unsplash.com/400x300/?rear-delt", settings: ["Peso", "Serie", "Ripetizioni"] },
+			{ name: "Tirate indietro", category: "Spalle", image: "https://source.unsplash.com/400x300/?rear-shoulder", settings: ["Peso", "Serie", "Ripetizioni"] },
 
-/* 🔴 BRACCIA */
-{ name:"French Press", category:"Braccia", image:"https://source.unsplash.com/400x300/?triceps", settings:["Peso","Serie","Ripetizioni"] },
-{ name:"Tricipiti al cavo busto 90°", category:"Braccia", image:"https://source.unsplash.com/400x300/?triceps-pushdown", settings:["Peso","Serie","Ripetizioni"] },
-{ name:"Easy Dip", category:"Braccia", image:"https://source.unsplash.com/400x300/?dip", settings:["Peso","Serie","Ripetizioni"] },
-{ name:"Bicipiti su panca 60°", category:"Braccia", image:"https://source.unsplash.com/400x300/?biceps", settings:["Peso","Serie","Ripetizioni"] },
-{ name:"Flessori presa neutra", category:"Braccia", image:"https://source.unsplash.com/400x300/?hammer-curl", settings:["Peso","Serie","Ripetizioni"] },
-{ name:"Tricipiti al cavo", category:"Braccia", image:"https://source.unsplash.com/400x300/?triceps-pushdown", settings:["Peso","Serie","Ripetizioni"] },
-{ name:"Bicipiti con manubri", category:"Braccia", image:"https://source.unsplash.com/400x300/?dumbbell-curl", settings:["Peso","Serie","Ripetizioni"] },
+			/* 🔴 BRACCIA */
+			{ name: "French Press", category: "Braccia", image: "https://source.unsplash.com/400x300/?triceps", settings: ["Peso", "Serie", "Ripetizioni"] },
+			{ name: "Tricipiti al cavo busto 90°", category: "Braccia", image: "https://source.unsplash.com/400x300/?triceps-pushdown", settings: ["Peso", "Serie", "Ripetizioni"] },
+			{ name: "Easy Dip", category: "Braccia", image: "https://source.unsplash.com/400x300/?dip", settings: ["Peso", "Serie", "Ripetizioni"] },
+			{ name: "Bicipiti su panca 60°", category: "Braccia", image: "https://source.unsplash.com/400x300/?biceps", settings: ["Peso", "Serie", "Ripetizioni"] },
+			{ name: "Flessori presa neutra", category: "Braccia", image: "https://source.unsplash.com/400x300/?hammer-curl", settings: ["Peso", "Serie", "Ripetizioni"] },
+			{ name: "Tricipiti al cavo", category: "Braccia", image: "https://source.unsplash.com/400x300/?triceps-pushdown", settings: ["Peso", "Serie", "Ripetizioni"] },
+			{ name: "Bicipiti con manubri", category: "Braccia", image: "https://source.unsplash.com/400x300/?dumbbell-curl", settings: ["Peso", "Serie", "Ripetizioni"] },
 
-/* ⚫ ADDOME */
-{ name:"Crunch", category:"Addome", image:"https://source.unsplash.com/400x300/?crunch", settings:["Inclinazione","Serie","Ripetizioni"] },
-{ name:"Crunch inverso", category:"Addome", image:"https://source.unsplash.com/400x300/?reverse-crunch", settings:["Inclinazione","Serie","Ripetizioni"] },
-{ name:"Retrazioni dell'addome", category:"Addome", image:"https://source.unsplash.com/400x300/?core", settings:["Serie","Ripetizioni"] },
-{ name:"Estensioni su panca HPX", category:"Addome", image:"https://source.unsplash.com/400x300/?back-extension", settings:["Peso","Inclinazione","Serie","Ripetizioni"] },
-{ name:"Plank", category:"Addome", image:"https://source.unsplash.com/400x300/?plank-exercise", settings:["Serie","Tempo"] }
+			/* ⚫ ADDOME */
+			{ name: "Crunch", category: "Addome", image: "https://source.unsplash.com/400x300/?crunch", settings: ["Inclinazione", "Serie", "Ripetizioni"] },
+			{ name: "Crunch inverso", category: "Addome", image: "https://source.unsplash.com/400x300/?reverse-crunch", settings: ["Inclinazione", "Serie", "Ripetizioni"] },
+			{ name: "Retrazioni dell'addome", category: "Addome", image: "https://source.unsplash.com/400x300/?core", settings: ["Serie", "Ripetizioni"] },
+			{ name: "Estensioni su panca HPX", category: "Addome", image: "https://source.unsplash.com/400x300/?back-extension", settings: ["Peso", "Inclinazione", "Serie", "Ripetizioni"] },
+			{ name: "Plank", category: "Addome", image: "https://source.unsplash.com/400x300/?plank-exercise", settings: ["Serie", "Tempo"] }
 
-];
+		];
 
 
-let activeCategory="Tutti";
-let scheda = JSON.parse(localStorage.getItem("scheda")) || [];
+		let activeCategory = "Tutti";
+		let scheda = JSON.parse(localStorage.getItem("scheda")) || [];
 
-/* SAVE */
-function saveScheda(){
-localStorage.setItem("scheda", JSON.stringify(scheda));
-}
+		/* SAVE */
+		function saveScheda() {
+			localStorage.setItem("scheda", JSON.stringify(scheda));
+		}
 
-/* TAB */
-function showTab(tab){
-  document.getElementById("eserciziTab").style.display="none";
-  document.getElementById("schedaTab").style.display="none";
+		/* TAB */
+		function showTab(tab) {
+			document.getElementById("eserciziTab").style.display = "none";
+			document.getElementById("schedaTab").style.display = "none";
 
-  document.querySelectorAll(".tabs button").forEach(b=>b.classList.remove("active"));
+			document.querySelectorAll(".tabs button").forEach(b => b.classList.remove("active"));
 
-  if(tab==="esercizi"){
-    document.getElementById("eserciziTab").style.display="block";
-    document.getElementById("tabE").classList.add("active");
-  }else{
-    document.getElementById("schedaTab").style.display="block";
-    document.getElementById("tabS").classList.add("active");
-  }
-}
+			if (tab === "esercizi") {
+				document.getElementById("eserciziTab").style.display = "block";
+				document.getElementById("tabE").classList.add("active");
+			} else {
+				document.getElementById("schedaTab").style.display = "block";
+				document.getElementById("tabS").classList.add("active");
+			}
+		}
 
-/* FILTRI */
-function renderFilters(){
-const categories=["Tutti",...new Set(exercises.map(e=>e.category))];
-const f=document.getElementById("filters");
-f.innerHTML="";
+		/* FILTRI */
+		function renderFilters() {
+			const categories = ["Tutti", ...new Set(exercises.map(e => e.category))];
+			const f = document.getElementById("filters");
+			f.innerHTML = "";
 
-categories.forEach(cat=>{
-const el=document.createElement("div");
-el.className="filter "+(cat===activeCategory?"active":"");
-el.textContent=categoryLabels[cat];
-el.onclick=()=>{
-activeCategory=cat;
-render();
-renderFilters();
-};
-f.appendChild(el);
-});
-}
+			categories.forEach(cat => {
+				const el = document.createElement("div");
+				el.className = "filter " + (cat === activeCategory ? "active" : "");
+				el.textContent = categoryLabels[cat];
+				el.onclick = () => {
+					activeCategory = cat;
+					render();
+					renderFilters();
+				};
+				f.appendChild(el);
+			});
+		}
 
-/* ADD */
-function addToScheda(i){
-const ex = exercises[i];
+		/* ADD */
+		function addToScheda(i) {
+			const ex = exercises[i];
 
-scheda.push({
-...ex,
-values:[],
-note:"",
-done:false,
-id: Date.now() + Math.random() // ID unico
-});
+			scheda.push({
+				...ex,
+				values: [],
+				note: "",
+				done: false,
+				id: Date.now() + Math.random() // ID unico
+			});
 
-saveScheda();
-renderScheda();
-showTab("scheda");
-}
+			saveScheda();
+			renderScheda();
+			showTab("scheda");
+		}
 
 
-/* RENDER ESERCIZI */
-function render(){
-const app=document.getElementById("app");
-const search=document.querySelector(".search").value.toLowerCase();
-app.innerHTML="";
+		/* RENDER ESERCIZI */
+		function render() {
+			const app = document.getElementById("app");
+			const search = document.querySelector(".search").value.toLowerCase();
+			app.innerHTML = "";
 
-exercises
-.filter(e=>activeCategory==="Tutti"||e.category===activeCategory)
-.filter(e=>e.name.toLowerCase().includes(search))
-.forEach(ex=>{
+			exercises
+				.filter(e => activeCategory === "Tutti" || e.category === activeCategory)
+				.filter(e => e.name.toLowerCase().includes(search))
+				.forEach(ex => {
 
-const div=document.createElement("div");
-div.className="card";
+					const div = document.createElement("div");
+					div.className = "card";
 
-div.innerHTML=`
+					div.innerHTML = `
 <div style="display:flex;justify-content:space-between;align-items:center;">
   <span style="flex:1;">${ex.name}</span>
 
@@ -862,34 +256,34 @@ div.innerHTML=`
 </div>
 `;
 
-app.appendChild(div);
-});
-}
+					app.appendChild(div);
+				});
+		}
 
-/* UPDATE */
-function updateValue(i,f,v){
-if(!scheda[i].values) scheda[i].values=[];
-scheda[i].values[f]=v;
-saveScheda();
-}
+		/* UPDATE */
+		function updateValue(i, f, v) {
+			if (!scheda[i].values) scheda[i].values = [];
+			scheda[i].values[f] = v;
+			saveScheda();
+		}
 
-function updateNote(i,v){
-scheda[i].note=v;
-saveScheda();
-}
+		function updateNote(i, v) {
+			scheda[i].note = v;
+			saveScheda();
+		}
 
-/* RENDER SCHEDA */
-function renderScheda(){
-const container=document.getElementById("scheda");
-container.innerHTML="";
+		/* RENDER SCHEDA */
+		function renderScheda() {
+			const container = document.getElementById("scheda");
+			container.innerHTML = "";
 
-scheda.forEach((ex,index)=>{
+			scheda.forEach((ex, index) => {
 
-const values = ex.values || [];
+				const values = ex.values || [];
 
-let html="";
-ex.settings.forEach((s,i)=>{
-html+=`
+				let html = "";
+				ex.settings.forEach((s, i) => {
+					html += `
 <div class="label">${s}</div>
 <input 
 value="${values[i] || ''}" 
@@ -897,12 +291,12 @@ oninput="updateValue(${index},${i},this.value)"
 ${ex.done ? "disabled" : ""}
 >
 `;
-});
+				});
 
-const div=document.createElement("div");
-div.className="card" + (ex.done ? " done" : "");
+				const div = document.createElement("div");
+				div.className = "card" + (ex.done ? " done" : "");
 
-div.innerHTML=`
+				div.innerHTML = `
 <div style="display:flex;justify-content:space-between;align-items:flex-start;">
 <span>${ex.name}</span>
 
@@ -960,128 +354,128 @@ ${ex.done ? "disabled" : ""}
 >${ex.note || ""}</textarea>
 `;
 
-container.appendChild(div);
-});
-}
+				container.appendChild(div);
+			});
+		}
 
-/* AZIONI */
-function remove(i){
-scheda.splice(i,1);
-saveScheda();
-renderScheda();
-}
+		/* AZIONI */
+		function remove(i) {
+			scheda.splice(i, 1);
+			saveScheda();
+			renderScheda();
+		}
 
-function moveUp(i){
-if(i>0){
-[scheda[i], scheda[i-1]]=[scheda[i-1], scheda[i]];
-saveScheda();
-renderScheda();
-}
-}
+		function moveUp(i) {
+			if (i > 0) {
+				[scheda[i], scheda[i - 1]] = [scheda[i - 1], scheda[i]];
+				saveScheda();
+				renderScheda();
+			}
+		}
 
-function moveDown(i){
-if(i<scheda.length-1){
-[scheda[i], scheda[i+1]]=[scheda[i+1], scheda[i]];
-saveScheda();
-renderScheda();
-}
-}
+		function moveDown(i) {
+			if (i < scheda.length - 1) {
+				[scheda[i], scheda[i + 1]] = [scheda[i + 1], scheda[i]];
+				saveScheda();
+				renderScheda();
+			}
+		}
 
-function complete(i){
-scheda[i].done = true;
-saveScheda();
-renderScheda();
-}
+		function complete(i) {
+			scheda[i].done = true;
+			saveScheda();
+			renderScheda();
+		}
 
-function resetScheda(){
-scheda.forEach(e=>e.done=false);
-saveScheda();
-renderScheda();
-}
+		function resetScheda() {
+			scheda.forEach(e => e.done = false);
+			saveScheda();
+			renderScheda();
+		}
 
-function resetDoneOnLoad(){
-scheda.forEach(e => e.done = false);
-saveScheda();
-}
+		function resetDoneOnLoad() {
+			scheda.forEach(e => e.done = false);
+			saveScheda();
+		}
 
-function addToSchedaByName(name){
-const ex = exercises.find(e => e.name === name);
+		function addToSchedaByName(name) {
+			const ex = exercises.find(e => e.name === name);
 
-scheda.push({
-...ex,
-values:[],
-note:"",
-done:false,
-id: Date.now() + Math.random()
-});
+			scheda.push({
+				...ex,
+				values: [],
+				note: "",
+				done: false,
+				id: Date.now() + Math.random()
+			});
 
-saveScheda();
-renderScheda();
-showTab("scheda");
-}
+			saveScheda();
+			renderScheda();
+			showTab("scheda");
+		}
 
-/* INIT */
-resetDoneOnLoad();
-renderFilters();
-render();
-renderScheda();
+		/* INIT */
+		resetDoneOnLoad();
+		renderFilters();
+		render();
+		renderScheda();
 
-function fixLayout(){
-  const header = document.querySelector(".header");
-  const layout = document.querySelector(".layout");
-  const sidebar = document.querySelector(".sidebar");
+		function fixLayout() {
+			const header = document.querySelector(".header");
+			const layout = document.querySelector(".layout");
+			const sidebar = document.querySelector(".sidebar");
 
-  if(header){
-    const h = header.offsetHeight;
-    document.documentElement.style.setProperty('--header-h', h + 'px');
-    layout.style.paddingTop = (h + 10) + "px";
+			if (header) {
+				const h = header.offsetHeight;
+				document.documentElement.style.setProperty('--header-h', h + 'px');
+				layout.style.paddingTop = (h + 10) + "px";
 
-  if(window.innerWidth <= 600){
-  sidebar.style.top = h + "px";
-  } else
-  {
-  sidebar.style.top = h + "px"
-}
-  }
-}
+				if (window.innerWidth <= 600) {
+					sidebar.style.top = h + "px";
+				} else {
+					sidebar.style.top = h + "px"
+				}
+			}
+		}
 
-window.addEventListener("load", fixLayout);
-window.addEventListener("resize", fixLayout);
+		window.addEventListener("load", fixLayout);
+		window.addEventListener("resize", fixLayout);
 
-let lastScroll = 0;
+		let lastScroll = 0;
 
-function handleHeader(){
-  const header = document.querySelector(".header");
-  const sidebar = document.querySelector(".sidebar");
-  const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-  const isMobile = window.innerWidth <= 600;
+		function handleHeader() {
+			const header = document.querySelector(".header");
+			const sidebar = document.querySelector(".sidebar");
+			const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+			const isMobile = window.innerWidth <= 600;
 
- // header resize
-  if(scrollTop > 30){
-    header.classList.add("small");
-  } else {
-    header.classList.remove("small");
-  }
+			// header resize
+			if (scrollTop > 30) {
+				header.classList.add("small");
+			} else {
+				header.classList.remove("small");
+			}
 
-  // 👇 SOLO MOBILE
-  if(isMobile){
-    if(scrollTop > 20){
-      sidebar.classList.add("glass");
-      sidebar.classList.add("shrink");
-    } else {
-      sidebar.classList.remove("glass");
-      sidebar.classList.remove("shrink");
-    }
-  }
+			// 👇 SOLO MOBILE
+			if (isMobile) {
+				if (scrollTop > 20) {
+					sidebar.classList.add("glass");
+					sidebar.classList.add("shrink");
+				} else {
+					sidebar.classList.remove("glass");
+					sidebar.classList.remove("shrink");
+				}
+			}
 
-  fixLayout();
-}
+			fixLayout();
+		}
 
-window.addEventListener("scroll", handleHeader);
-window.addEventListener("touchmove", handleHeader);
-window.addEventListener("load", handleHeader);
+		window.addEventListener("scroll", handleHeader);
+		window.addEventListener("touchmove", handleHeader);
+		window.addEventListener("load", handleHeader);
 
-</script>
+	</script>
 
 </body>
+
 </html>
