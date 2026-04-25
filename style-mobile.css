@@ -1,0 +1,12 @@
+@media(max-width:31.25rem) {
+    body {
+        grid-template-columns: auto 1fr;
+        grid-template-rows: auto 1fr;
+    }
+
+    header {}
+
+    aside {}
+
+    main {}
+}
