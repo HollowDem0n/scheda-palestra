@@ -9,6 +9,8 @@
 	<link rel="apple-touch-icon" href="icon-192.png">
 	<link rel="stylesheet" href="style.css">
 	<link rel="stylesheet" href="style-mobile.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/4.0.0-beta/jquery.min.js" integrity="sha512-qFOQ9YFAeGj1gDOuUD61g3D+tLDv3u1ECYWqT82WQoaWrOhAY+5mRMTTVsQdWutbA5FORCnkEPEgU0OF8IzGvA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+	<script src="script.js"></script>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Scheda Starbene</title>
@@ -21,8 +23,13 @@
 	</header>
 
 	<!--Sidebar-->
-	<aside><input class="search" placeholder="Cerca esercizio..." oninput="render()">
-		<div class="filters" id="filters"></div>
+	<aside>
+		<input class="search" placeholder="Cerca esercizio..." oninput="render()">
+		<div class="lista-filtri">
+			<div class="button">
+				<span>Tutti</span>
+			</div>
+		</div>
 	</aside>
 
 	<!--Contenuto-->
@@ -51,11 +58,13 @@
 		<div class="tab-views">
 			<div class="tab-view tab-view-esercizi">
 				<div class="lista-esercizi">
-					<div class="card-esercizio">
+					<div class="card-esercizio" style="display:none;">
 						<span>Retroversioni del bacino in quadrupedia</span>
-						<div class="button"><svg viewBox="0 0 24 24">
+						<div class="button">
+							<svg viewBox="0 0 24 24">
 								<path d="M12 5V19M5 12H19" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" />
-							</svg></div>
+							</svg>
+						</div>
 						<img src="https://github.com/HollowDem0n/scheda-palestra/blob/main/images/tapis.png?raw=true" alt="">
 					</div>
 

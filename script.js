@@ -17,15 +17,15 @@ const listaEsercizi = [
 	{ name: "Retroposizione cingolo scapolare", category: "Mobilità", image: "https://source.unsplash.com/400x300/?posture-exercise", settings: ["Serie", "Ripetizioni"] },
 
 	/* 🔵 PETTO */
-	{ name: "Spinte su panca", category: "Petto", image: "https://source.unsplash.com/400x300/?bench-press", settings: ["Peso", "Serie", "Ripetizioni"] },
-	{ name: "Piegamenti sulle braccia", category: "Petto", image: "https://source.unsplash.com/400x300/?push-up", settings: ["Serie", "Ripetizioni"] },
-	{ name: "Croci su panca", category: "Petto", image: "https://source.unsplash.com/400x300/?dumbbell-fly", settings: ["Peso", "Serie", "Ripetizioni"] },
-	{ name: "Pull-Over", category: "Petto", image: "https://source.unsplash.com/400x300/?pullover", settings: ["Peso", "Serie", "Ripetizioni"] },
-	{ name: "Croci al DAP", category: "Petto", image: "https://source.unsplash.com/400x300/?cable-fly", settings: ["Peso", "Serie", "Ripetizioni"] },
-	{ name: "Cross Over al DAP", category: "Petto", image: "https://source.unsplash.com/400x300/?crossover", settings: ["Peso", "Serie", "Ripetizioni"] },
-	{ name: "Chest Press", category: "Petto", image: "https://source.unsplash.com/400x300/?chest-press", settings: ["Peso", "Sedile", "Serie", "Ripetizioni"] },
-	{ name: "Braccio addotto", category: "Petto", image: "https://source.unsplash.com/400x300/?chest-machine", settings: ["Peso", "Serie", "Ripetizioni"] },
-	{ name: "Braccio abdotto", category: "Petto", image: "https://source.unsplash.com/400x300/?chest-workout", settings: ["Peso", "Serie", "Ripetizioni"] },
+	{ name: "Spinte su panca", category: "Pettorali", image: "https://source.unsplash.com/400x300/?bench-press", settings: ["Peso", "Serie", "Ripetizioni"] },
+	{ name: "Piegamenti sulle braccia", category: "Pettorali", image: "https://source.unsplash.com/400x300/?push-up", settings: ["Serie", "Ripetizioni"] },
+	{ name: "Croci su panca", category: "Pettorali", image: "https://source.unsplash.com/400x300/?dumbbell-fly", settings: ["Peso", "Serie", "Ripetizioni"] },
+	{ name: "Pull-Over", category: "Pettorali", image: "https://source.unsplash.com/400x300/?pullover", settings: ["Peso", "Serie", "Ripetizioni"] },
+	{ name: "Croci al DAP", category: "Pettorali", image: "https://source.unsplash.com/400x300/?cable-fly", settings: ["Peso", "Serie", "Ripetizioni"] },
+	{ name: "Cross Over al DAP", category: "Pettorali", image: "https://source.unsplash.com/400x300/?crossover", settings: ["Peso", "Serie", "Ripetizioni"] },
+	{ name: "Chest Press", category: "Pettorali", image: "https://source.unsplash.com/400x300/?chest-press", settings: ["Peso", "Sedile", "Serie", "Ripetizioni"] },
+	{ name: "Braccio addotto", category: "Pettorali", image: "https://source.unsplash.com/400x300/?chest-machine", settings: ["Peso", "Serie", "Ripetizioni"] },
+	{ name: "Braccio abdotto", category: "Pettorali", image: "https://source.unsplash.com/400x300/?chest-workout", settings: ["Peso", "Serie", "Ripetizioni"] },
 
 	/* 🔵 SCHIENA */
 	{ name: "Vertical Traction", category: "Schiena", image: "https://source.unsplash.com/400x300/?lat-machine", settings: ["Peso", "Serie", "Ripetizioni"] },
@@ -137,41 +137,38 @@ function addToScheda(i) {
 }
 
 
-/* RENDER ESERCIZI */
+/** Aggiunta esercizi alla pagina  */
 function aggiungiEsercizi() {
-	//const app = document.getElementById("app");
-	//const search = document.querySelector(".search").value.toLowerCase();
-for (const esercizio of listaEsercizi) {
-	
+	for (const esercizio of listaEsercizi) {
+		let templateCardEsercizio = `
+		<div class="card-esercizio" data-categoria="${esercizio["category"]}">
+			<span>${esercizio["name"]}</span>
+			<div class="button accent">
+			<svg viewBox="0 0 24 24">
+					<path d="M12 5V19M5 12H19" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" />
+				</svg>
+			</div>
+			<img src="${esercizio["image"]}" alt="">
+		</div>`
+		document.querySelector(".lista-esercizi").insertAdjacentHTML("beforeend", templateCardEsercizio)
+	}
+
 }
-	app.innerHTML = "";
 
-	listaEsercizi
-		.filter(e => activeCategory === "Tutti" || e.category === activeCategory)
-		.filter(e => e.name.toLowerCase().includes(search))
-		.forEach(ex => {
-
-			const div = document.createElement("div");
-			div.className = "card";
-
-			div.innerHTML = `
-<div style="display:flex;justify-content:space-between;align-items:center;">
-  <span style="flex:1;">${ex.name}</span>
-
-  <div class="actions">
-    <button class="btn" onclick="addToSchedaByName('${ex.name}')">
-      
-    </button>
-  </div>
-</div>
-
-<div class="img-box">
-  <img src="${ex.image}" onerror="this.src='images/default.png'">
-</div>
-`;
-
-			app.appendChild(div);
-		});
+/** Aggiunta filtri alla pagina  */
+function aggiungiFiltri() {
+	let listaFiltri = [...new Set(listaEsercizi.map(esercizio => esercizio.category))]
+	for (const filtro of listaFiltri) {
+		let templateFiltroNodo = $(`<div class="button" data-filtro="${filtro}">
+			<span>${filtro}</span>
+		</div>`).appendTo(".lista-filtri")
+		templateFiltroNodo.on("click", function(){
+			$(this).parent().children().removeClass("accent")
+			$(this).addClass("accent")
+			$(".lista-esercizi .card-esercizio").fadeOut()
+			$(".lista-esercizi .card-esercizio[data-categoria='"+$(this).attr("data-filtro")+"']").fadeIn()
+		})
+	}
 }
 
 /* UPDATE */
@@ -329,10 +326,14 @@ function addToSchedaByName(name) {
 }
 
 /* INIT */
-resetDoneOnLoad();
-renderFilters();
-aggiungiEsercizi();
-renderScheda();
+//resetDoneOnLoad();
+//renderFilters();
+
+//renderScheda();
+document.addEventListener("DOMContentLoaded", () => {
+	aggiungiFiltri();
+	aggiungiEsercizi();
+})
 
 
 
