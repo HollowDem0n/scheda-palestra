@@ -4,15 +4,15 @@ const listaEsercizi = [
 
 	/* 🔥 RISCALDAMENTO */
 	{ name: "Tapis Roulant", category: "Riscaldamento", image: "images/tapis.png", settings: ["Tempo", "Velocità", "Inclinazione"] },
-	{ name: "Climb", category: "Riscaldamento", image: "https://source.unsplash.com/400x300/?stair-climber", settings: ["Tempo", "Velocità", "Inclinazione"] },
-	{ name: "Skill Run", category: "Riscaldamento", image: "https://source.unsplash.com/400x300/?running", settings: ["Tempo", "Velocità", "Inclinazione"] },
-	{ name: "Synchro", category: "Riscaldamento", image: "https://source.unsplash.com/400x300/?elliptical", settings: ["Tempo", "Velocità", "Inclinazione"] },
+	{ name: "Climb", category: "Riscaldamento", image: "images/climb.png", settings: ["Tempo", "Velocità", "Inclinazione"] },
+	{ name: "Skill Run", category: "Riscaldamento", image: "images/skill.png", settings: ["Tempo", "Velocità", "Inclinazione"] },
+	{ name: "Synchro", category: "Riscaldamento", image: "images/synchro.png", settings: ["Tempo", "Velocità", "Inclinazione"] },
 
 	/* 🟤 MOBILITÀ */
-	{ name: "Estensioni Braccio/Gamba", category: "Mobilità", image: "https://source.unsplash.com/400x300/?stretching", settings: ["Serie", "Ripetizioni"] },
-	{ name: "Retroversioni del bacino in quadrupedia", category: "Mobilità", image: "https://source.unsplash.com/400x300/?core", settings: ["Serie", "Ripetizioni"] },
-	{ name: "Elevazioni con asta", category: "Mobilità", image: "https://source.unsplash.com/400x300/?shoulder-mobility", settings: ["Serie", "Ripetizioni"] },
-	{ name: "Retropulsioni con asta", category: "Mobilità", image: "https://source.unsplash.com/400x300/?shoulder-exercise", settings: ["Serie", "Ripetizioni"] },
+	{ name: "Estensioni Braccio/Gamba", category: "Mobilità", image: "images/Estensioni Braccio-Gamba.png", settings: ["Serie", "Ripetizioni"] },
+	{ name: "Retroversioni del bacino in quadrupedia", category: "Mobilità", image: "images/Retroversioni-bacino.png", settings: ["Serie", "Ripetizioni"] },
+	{ name: "Elevazioni con asta", category: "Mobilità", image: "images/Elevazioni-asta.png", settings: ["Serie", "Ripetizioni"] },
+	{ name: "Retropulsioni con asta", category: "Mobilità", image: "images/Retropulsioni-asta.png", settings: ["Serie", "Ripetizioni"] },
 	{ name: "Affossamento cingolo scapolare", category: "Mobilità", image: "https://source.unsplash.com/400x300/?shoulder-mobility", settings: ["Serie", "Ripetizioni"] },
 	{ name: "Retroposizione cingolo scapolare", category: "Mobilità", image: "https://source.unsplash.com/400x300/?posture-exercise", settings: ["Serie", "Ripetizioni"] },
 
@@ -20,15 +20,15 @@ const listaEsercizi = [
 	{ name: "Spinte su panca", category: "Pettorali", image: "https://source.unsplash.com/400x300/?bench-press", settings: ["Peso", "Serie", "Ripetizioni"] },
 	{ name: "Piegamenti sulle braccia", category: "Pettorali", image: "https://source.unsplash.com/400x300/?push-up", settings: ["Serie", "Ripetizioni"] },
 	{ name: "Croci su panca", category: "Pettorali", image: "https://source.unsplash.com/400x300/?dumbbell-fly", settings: ["Peso", "Serie", "Ripetizioni"] },
-	{ name: "Pull-Over", category: "Pettorali", image: "https://source.unsplash.com/400x300/?pullover", settings: ["Peso", "Serie", "Ripetizioni"] },
-	{ name: "Croci al DAP", category: "Pettorali", image: "https://source.unsplash.com/400x300/?cable-fly", settings: ["Peso", "Serie", "Ripetizioni"] },
-	{ name: "Cross Over al DAP", category: "Pettorali", image: "https://source.unsplash.com/400x300/?crossover", settings: ["Peso", "Serie", "Ripetizioni"] },
+	{ name: "Pull-Over", category: "Pettorali", image: "images/Pull-Over.png", settings: ["Peso", "Serie", "Ripetizioni"] },
+	{ name: "Croci al DAP", category: "Pettorali", image: "images/CrocialDAP.png", settings: ["Peso", "Serie", "Ripetizioni"] },
+	{ name: "Cross Over al DAP", category: "Pettorali", image: "images/CrocialDAP.png", settings: ["Peso", "Serie", "Ripetizioni"] },
 	{ name: "Chest Press", category: "Pettorali", image: "https://source.unsplash.com/400x300/?chest-press", settings: ["Peso", "Sedile", "Serie", "Ripetizioni"] },
 	{ name: "Braccio addotto", category: "Pettorali", image: "https://source.unsplash.com/400x300/?chest-machine", settings: ["Peso", "Serie", "Ripetizioni"] },
 	{ name: "Braccio abdotto", category: "Pettorali", image: "https://source.unsplash.com/400x300/?chest-workout", settings: ["Peso", "Serie", "Ripetizioni"] },
 
 	/* 🔵 SCHIENA */
-	{ name: "Vertical Traction", category: "Schiena", image: "https://source.unsplash.com/400x300/?lat-machine", settings: ["Peso", "Serie", "Ripetizioni"] },
+	{ name: "Vertical Traction", category: "Schiena", image: "images/vertical.png", settings: ["Peso", "Serie", "Ripetizioni"] },
 	{ name: "Lat Machine", category: "Schiena", image: "https://source.unsplash.com/400x300/?lat-pulldown", settings: ["Peso", "Serie", "Ripetizioni"] },
 	{ name: "Lat Machine IMP: A-B-C-D-E", category: "Schiena", image: "https://source.unsplash.com/400x300/?lat-pulldown", settings: ["Peso", "Serie", "Ripetizioni"] },
 	{ name: "Easy Traction", category: "Schiena", image: "https://source.unsplash.com/400x300/?pull-up", settings: ["Peso", "Serie", "Ripetizioni"] },

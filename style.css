@@ -1,6 +1,6 @@
 :root {
 	--bg: #000;
-	--card: #1c1c1e;
+	--card: #1d1d1d;
 	--accent: #ffd600;
 	--text: #fff;
 	--header-height: 6.5rem;
@@ -20,7 +20,7 @@ body {
 body {
 	margin: 0;
 	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI";
-	background: linear-gradient(180deg, #171717 0%, #000 100%);
+	background: radial-gradient(circle at top left, #1f1f1f 0%, #111 100%);
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-attachment: fixed;
@@ -39,7 +39,7 @@ textarea {
 	font-size: 1rem;
 	width: 100%;
 	padding: 0.25rem 0.75rem;
-	background-color: #222;
+	background-color: var(--card);
 	color: #fff;
 	border: none;
 	border-radius: var(--internal-border-radius);
@@ -53,8 +53,8 @@ textarea:hover {
 }
 
 .button {
-	background-color: #444;
-	color: #fff;
+	background-color: var(--card);
+	color: var(--text);
 	padding: 0.125rem 0.75rem;
 	height: fit-content;
 	border-radius: 0.75rem;
@@ -71,6 +71,8 @@ textarea:hover {
 
 .button:hover {
 	transform: scale(1.1);
+	background-color: var(--accent);
+	color: #000;
 }
 
 .button>svg {
@@ -156,7 +158,7 @@ main {
 	display: grid;
 	grid-template-columns: 1fr auto;
 	grid-template-rows: auto 1fr;
-	background-color: #333;
+	background-color: var(--card);
 	padding: 1rem;
 	height: 17rem;
 	max-height: 17rem;
@@ -164,6 +166,10 @@ main {
 	border-radius: 1.5rem;
 	box-shadow: 0px 3px 8px #0000005c;
 	transition: transform 0.25s, box-shadow 0.5s;
+	min-width: 0;
+	overflow-wrap: break-word;
+	word-break: normal;
+	line-height: 1.1;
 }
 
 .card-esercizio:hover {
