@@ -13,17 +13,17 @@ const listaEsercizi = [
 	{ name: "Retroversioni del bacino in quadrupedia", category: "Mobilità", image: "images/Retroversioni-bacino.png", settings: ["Serie", "Ripetizioni"] },
 	{ name: "Elevazioni con asta", category: "Mobilità", image: "images/Elevazioni-asta.png", settings: ["Serie", "Ripetizioni"] },
 	{ name: "Retropulsioni con asta", category: "Mobilità", image: "images/Retropulsioni-asta.png", settings: ["Serie", "Ripetizioni"] },
-	{ name: "Affossamento cingolo scapolare", category: "Mobilità", image: "https://source.unsplash.com/400x300/?shoulder-mobility", settings: ["Serie", "Ripetizioni"] },
-	{ name: "Retroposizione cingolo scapolare", category: "Mobilità", image: "https://source.unsplash.com/400x300/?posture-exercise", settings: ["Serie", "Ripetizioni"] },
+	{ name: "Affossamento cingolo scapolare", category: "Mobilità", image: "images/Flessioni-scapola.png", settings: ["Serie", "Ripetizioni"] },
+	{ name: "Retroposizione cingolo scapolare", category: "Mobilità", image: "images/Retroposizione-scapolare.png", settings: ["Serie", "Ripetizioni"] },
 
 	/* 🔵 PETTO */
-	{ name: "Spinte su panca", category: "Pettorali", image: "https://source.unsplash.com/400x300/?bench-press", settings: ["Peso", "Serie", "Ripetizioni"] },
-	{ name: "Piegamenti sulle braccia", category: "Pettorali", image: "https://source.unsplash.com/400x300/?push-up", settings: ["Serie", "Ripetizioni"] },
-	{ name: "Croci su panca", category: "Pettorali", image: "https://source.unsplash.com/400x300/?dumbbell-fly", settings: ["Peso", "Serie", "Ripetizioni"] },
+	{ name: "Spinte su panca", category: "Pettorali", image: "images/Spinte-panca.png", settings: ["Peso", "Serie", "Ripetizioni"] },
+	{ name: "Piegamenti sulle braccia", category: "Pettorali", image: "images/Piegamenti-braccia.png", settings: ["Serie", "Ripetizioni"] },
+	{ name: "Croci su panca", category: "Pettorali", image: "images/Croci-panca.png", settings: ["Peso", "Serie", "Ripetizioni"] },
 	{ name: "Pull-Over", category: "Pettorali", image: "images/Pull-Over.png", settings: ["Peso", "Serie", "Ripetizioni"] },
 	{ name: "Croci al DAP", category: "Pettorali", image: "images/CrocialDAP.png", settings: ["Peso", "Serie", "Ripetizioni"] },
 	{ name: "Cross Over al DAP", category: "Pettorali", image: "images/CrocialDAP.png", settings: ["Peso", "Serie", "Ripetizioni"] },
-	{ name: "Chest Press", category: "Pettorali", image: "https://source.unsplash.com/400x300/?chest-press", settings: ["Peso", "Sedile", "Serie", "Ripetizioni"] },
+	{ name: "Chest Press", category: "Pettorali", image: "images/chest-press.png", settings: ["Peso", "Sedile", "Serie", "Ripetizioni"] },
 	{ name: "Braccio addotto", category: "Pettorali", image: "https://source.unsplash.com/400x300/?chest-machine", settings: ["Peso", "Serie", "Ripetizioni"] },
 	{ name: "Braccio abdotto", category: "Pettorali", image: "https://source.unsplash.com/400x300/?chest-workout", settings: ["Peso", "Serie", "Ripetizioni"] },
 
