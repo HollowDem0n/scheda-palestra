@@ -24,17 +24,17 @@ const listaEsercizi = [
 	{ name: "Croci al DAP", category: "Pettorali", image: "images/CrocialDAP.png", settings: ["Peso", "Serie", "Ripetizioni"] },
 	{ name: "Cross Over al DAP", category: "Pettorali", image: "images/CrocialDAP.png", settings: ["Peso", "Serie", "Ripetizioni"] },
 	{ name: "Chest Press", category: "Pettorali", image: "images/chest-press.png", settings: ["Peso", "Sedile", "Serie", "Ripetizioni"] },
-	{ name: "Braccio addotto", category: "Pettorali", image: "https://source.unsplash.com/400x300/?chest-machine", settings: ["Peso", "Serie", "Ripetizioni"] },
-	{ name: "Braccio abdotto", category: "Pettorali", image: "https://source.unsplash.com/400x300/?chest-workout", settings: ["Peso", "Serie", "Ripetizioni"] },
+	{ name: "Braccio addotto", category: "Pettorali", image: "images/braccio-addotto.png", settings: ["Peso", "Serie", "Ripetizioni"] },
+	{ name: "Braccio abdotto", category: "Pettorali", image: "images/braccio-abdottopng.png", settings: ["Peso", "Serie", "Ripetizioni"] },
 
 	/* 🔵 SCHIENA */
 	{ name: "Vertical Traction", category: "Schiena", image: "images/vertical.png", settings: ["Peso", "Serie", "Ripetizioni"] },
-	{ name: "Lat Machine", category: "Schiena", image: "https://source.unsplash.com/400x300/?lat-pulldown", settings: ["Peso", "Serie", "Ripetizioni"] },
-	{ name: "Lat Machine IMP: A-B-C-D-E", category: "Schiena", image: "https://source.unsplash.com/400x300/?lat-pulldown", settings: ["Peso", "Serie", "Ripetizioni"] },
-	{ name: "Easy Traction", category: "Schiena", image: "https://source.unsplash.com/400x300/?pull-up", settings: ["Peso", "Serie", "Ripetizioni"] },
-	{ name: "Low Row", category: "Schiena", image: "https://source.unsplash.com/400x300/?row-machine", settings: ["Peso", "Serie", "Ripetizioni"] },
-	{ name: "Pulley", category: "Schiena", image: "https://source.unsplash.com/400x300/?seated-row", settings: ["Peso", "Serie", "Ripetizioni"] },
-	{ name: "Rematore", category: "Schiena", image: "https://source.unsplash.com/400x300/?barbell-row", settings: ["Peso", "Serie", "Ripetizioni"] },
+	{ name: "Lat Machine", category: "Schiena", image: "images/lat-machine.png", settings: ["Peso", "Serie", "Ripetizioni"] },
+	{ name: "Lat Machine IMP: A-B-C-D-E", category: "Schiena", image: "images/lat-machine.png", settings: ["Peso", "Serie", "Ripetizioni"] },
+	{ name: "Easy Traction", category: "Schiena", image: "images/Easy-Traction.png", settings: ["Peso", "Serie", "Ripetizioni"] },
+	{ name: "Low Row", category: "Schiena", image: "images/Low-Row.png", settings: ["Peso", "Serie", "Ripetizioni"] },
+	{ name: "Pulley", category: "Schiena", image: "images/Pulley.png", settings: ["Peso", "Serie", "Ripetizioni"] },
+	{ name: "Rematore", category: "Schiena", image: "images/Rematore.png", settings: ["Peso", "Serie", "Ripetizioni"] },
 
 	/* 🟡 GAMBE */
 	{ name: "Leg Press Pure Strenght", category: "Gambe", image: "https://source.unsplash.com/400x300/?leg-press", settings: ["Peso", "Serie", "Ripetizioni"] },
@@ -54,7 +54,7 @@ const listaEsercizi = [
 	{ name: "Lento su panca", category: "Spalle", image: "https://source.unsplash.com/400x300/?shoulder-press", settings: ["Peso", "Inclinazione", "Serie", "Ripetizioni"] },
 	{ name: "Spinte neutre", category: "Spalle", image: "https://source.unsplash.com/400x300/?dumbbell-press", settings: ["Peso", "Serie", "Ripetizioni"] },
 	{ name: "Alzate frontali", category: "Spalle", image: "https://source.unsplash.com/400x300/?front-raise", settings: ["Peso", "Serie", "Ripetizioni"] },
-	{ name: "Alzate laterali 45°", category: "Spalle", image: "https://source.unsplash.com/400x300/?rear-delt", settings: ["Peso", "Serie", "Ripetizioni"] },
+	{ name: "Alzate laterali 45°", category: "Spalle", image: "images/alzate-laterali-45.png", settings: ["Peso", "Serie", "Ripetizioni"] },
 	{ name: "Tirate indietro", category: "Spalle", image: "https://source.unsplash.com/400x300/?rear-shoulder", settings: ["Peso", "Serie", "Ripetizioni"] },
 
 	/* 🔴 BRACCIA */
