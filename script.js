@@ -55,15 +55,15 @@ const listaEsercizi = [
 	{ name: "Spinte neutre", category: "Spalle", image: "images/spinte-neutre.png", settings: ["Peso", "Serie", "Ripetizioni"] },
 	{ name: "Alzate frontali", category: "Spalle", image: "images/alzate-frontali.png", settings: ["Peso", "Serie", "Ripetizioni"] },
 	{ name: "Alzate laterali 45°", category: "Spalle", image: "images/alzate-laterali-45.png", settings: ["Peso", "Serie", "Ripetizioni"] },
-	{ name: "Tirate indietro", category: "Spalle", image: "https://source.unsplash.com/400x300/?rear-shoulder", settings: ["Peso", "Serie", "Ripetizioni"] },
+	{ name: "Tirate indietro", category: "Spalle", image: "images/tirate-indietro.png", settings: ["Peso", "Serie", "Ripetizioni"] },
 
 	/* 🔴 BRACCIA */
-	{ name: "French Press", category: "Braccia", image: "https://source.unsplash.com/400x300/?triceps", settings: ["Peso", "Serie", "Ripetizioni"] },
-	{ name: "Tricipiti al cavo busto 90°", category: "Braccia", image: "https://source.unsplash.com/400x300/?triceps-pushdown", settings: ["Peso", "Serie", "Ripetizioni"] },
-	{ name: "Easy Dip", category: "Braccia", image: "https://source.unsplash.com/400x300/?dip", settings: ["Peso", "Serie", "Ripetizioni"] },
-	{ name: "Bicipiti su panca 60°", category: "Braccia", image: "https://source.unsplash.com/400x300/?biceps", settings: ["Peso", "Serie", "Ripetizioni"] },
-	{ name: "Flessori presa neutra", category: "Braccia", image: "https://source.unsplash.com/400x300/?hammer-curl", settings: ["Peso", "Serie", "Ripetizioni"] },
-	{ name: "Tricipiti al cavo", category: "Braccia", image: "https://source.unsplash.com/400x300/?triceps-pushdown", settings: ["Peso", "Serie", "Ripetizioni"] },
+	{ name: "French Press", category: "Braccia", image: "images/french-press.png", settings: ["Peso", "Serie", "Ripetizioni"] },
+	{ name: "Tricipiti al cavo busto 90°", category: "Braccia", image: "images/tricipiti- busto-90.png", settings: ["Peso", "Serie", "Ripetizioni"] },
+	{ name: "Easy Dip", category: "Braccia", image: "images/easy-dip.png", settings: ["Peso", "Serie", "Ripetizioni"] },
+	{ name: "Bicipiti su panca 60°", category: "Braccia", image: "images/bicipiti-panca-60.png", settings: ["Peso", "Serie", "Ripetizioni"] },
+	{ name: "Flessori presa neutra", category: "Braccia", image: "images/flessori-presa-neutra.png", settings: ["Peso", "Serie", "Ripetizioni"] },
+	{ name: "Tricipiti al cavo", category: "Braccia", image: "images/tricipiti-cavo.png", settings: ["Peso", "Serie", "Ripetizioni"] },
 	{ name: "Bicipiti con manubri", category: "Braccia", image: "https://source.unsplash.com/400x300/?dumbbell-curl", settings: ["Peso", "Serie", "Ripetizioni"] },
 
 	/* ⚫ ADDOME */
