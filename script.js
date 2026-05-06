@@ -64,14 +64,14 @@ const listaEsercizi = [
 	{ name: "Bicipiti su panca 60°", category: "Braccia", image: "images/bicipiti-panca-60.png", settings: ["Peso", "Serie", "Ripetizioni"] },
 	{ name: "Flessori presa neutra", category: "Braccia", image: "images/flessori-presa-neutra.png", settings: ["Peso", "Serie", "Ripetizioni"] },
 	{ name: "Tricipiti al cavo", category: "Braccia", image: "images/tricipiti-cavo.png", settings: ["Peso", "Serie", "Ripetizioni"] },
-	{ name: "Bicipiti con manubri", category: "Braccia", image: "https://source.unsplash.com/400x300/?dumbbell-curl", settings: ["Peso", "Serie", "Ripetizioni"] },
+	{ name: "Bicipiti con manubri", category: "Braccia", image: "images/Bicipiti-manubri.png", settings: ["Peso", "Serie", "Ripetizioni"] },
 
 	/* ⚫ ADDOME */
-	{ name: "Crunch", category: "Addome", image: "https://source.unsplash.com/400x300/?crunch", settings: ["Inclinazione", "Serie", "Ripetizioni"] },
-	{ name: "Crunch inverso", category: "Addome", image: "https://source.unsplash.com/400x300/?reverse-crunch", settings: ["Inclinazione", "Serie", "Ripetizioni"] },
-	{ name: "Retrazioni dell'addome", category: "Addome", image: "https://source.unsplash.com/400x300/?core", settings: ["Serie", "Ripetizioni"] },
-	{ name: "Estensioni su panca HPX", category: "Addome", image: "https://source.unsplash.com/400x300/?back-extension", settings: ["Peso", "Inclinazione", "Serie", "Ripetizioni"] },
-	{ name: "Plank", category: "Addome", image: "https://source.unsplash.com/400x300/?plank-exercise", settings: ["Serie", "Tempo"] }
+	{ name: "Crunch", category: "Addome", image: "images/crunch.png", settings: ["Inclinazione", "Serie", "Ripetizioni"] },
+	{ name: "Crunch inverso", category: "Addome", image: "images/crunch-inverso.png", settings: ["Inclinazione", "Serie", "Ripetizioni"] },
+	{ name: "Retrazioni dell'addome", category: "Addome", image: "images/retrazioni-addome.png", settings: ["Serie", "Ripetizioni"] },
+	{ name: "Estensioni su panca HPX", category: "Addome", image: "images/estensioni-panca-hpx.png", settings: ["Peso", "Inclinazione", "Serie", "Ripetizioni"] },
+	{ name: "Plank", category: "Addome", image: "images/plank.png", settings: ["Serie", "Tempo"] }
 
 ];
 
