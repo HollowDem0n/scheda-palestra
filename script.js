@@ -140,7 +140,7 @@ function addToScheda(i) {
 /** Aggiunta esercizi alla pagina  */
 function aggiungiEsercizi() {
 	for (const esercizio of listaEsercizi) {
-		let templateCardEsercizio = `
+		let templateCardEsercizioNodo = $(`
 		<div class="card-esercizio" data-categoria="${esercizio["category"]}">
 			<span>${esercizio["name"]}</span>
 			<div class="button accent">
@@ -149,24 +149,49 @@ function aggiungiEsercizi() {
 				</svg>
 			</div>
 			<img src="${esercizio["image"]}" alt="">
-		</div>`
-		document.querySelector(".lista-esercizi").insertAdjacentHTML("beforeend", templateCardEsercizio)
+		</div>`).appendTo(".lista-esercizi")
 	}
-
 }
 
 /** Aggiunta filtri alla pagina  */
 function aggiungiFiltri() {
-	let listaFiltri = [...new Set(listaEsercizi.map(esercizio => esercizio.category))]
+	let listaFiltri = ["Tutti", ...new Set(listaEsercizi.map(esercizio => esercizio.category))]
+
+	// Per ogni filtro della listaFiltri...
 	for (const filtro of listaFiltri) {
+
+		// Creo la variabile templateFiltroNodo ccon classe bottone con il nome del filtro e lo mette dentro lista-filtri 
 		let templateFiltroNodo = $(`<div class="button" data-filtro="${filtro}">
 			<span>${filtro}</span>
 		</div>`).appendTo(".lista-filtri")
-		templateFiltroNodo.on("click", function(){
+
+		// Quando clicco il bottone del filtro...
+		templateFiltroNodo.on("click", function () {
+
+			// Selezione del filtro che abbiamo cliccato, ne selezioniamo il genitore (.lista-filtri) di cui poi selezioniamo tutti i figli (nodi flitro). A tutti i nodi filtro togliamo la classe accent per "spegnerli"
 			$(this).parent().children().removeClass("accent")
+
+			// "Accende" il filtro che abbiamo cliccato
 			$(this).addClass("accent")
-			$(".lista-esercizi .card-esercizio").fadeOut()
-			$(".lista-esercizi .card-esercizio[data-categoria='"+$(this).attr("data-filtro")+"']").fadeIn()
+
+			// Creo la variabile "attributoDataFiltroCliccato" che è l'attiributo di "templateFiltroNodoCliccato"
+			let attributoDataFiltroCliccato = $(this).attr("data-filtro")
+
+			// Se attributoDataFiltroCliccato è uguale alla stringa Tutti...
+			if (attributoDataFiltroCliccato == "Tutti") {
+
+				// Mostra tutti gli esercizi di lista-esercizi
+				$(".lista-esercizi .card-esercizio").fadeIn()
+			}
+			else {
+				// Selezioniamo tutte le card-esercizio di lista-esercizio e li nascondiamo
+				$(".lista-esercizi .card-esercizio").fadeOut()
+
+				// Selezionaimo tutte le card-esercizio di lista esercizio che hanno l'attributo "data-categoria" che corrisponde a quello di "data-filtro" e la fa vedere
+				$(".lista-esercizi .card-esercizio[data-categoria='" + attributoDataFiltroCliccato + "']").fadeIn()
+				
+			}
+
 		})
 	}
 }
